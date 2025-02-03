@@ -1,3 +1,9 @@
+"""
+Server module for the Emotion Detection web application.
+
+This Flask application provides an API endpoint to analyze emotions from a given text.
+"""
+
 from flask import Flask, request, jsonify
 from EmotionDetection import emotion_detector
 
@@ -5,6 +11,14 @@ app = Flask(__name__)
 
 @app.route('/emotionDetector', methods=['POST'])
 def emotion_detector_api():
+    """Endpoint for analyzing emotions from a given text.
+
+    This function receives a JSON payload containing text, processes it using
+    the emotion_detector function, and returns the detected emotions.
+
+    Returns:
+        JSON response with emotion scores and dominant emotion.
+    """
     data = request.json
     text_to_analyze = data.get("text", "").strip()
 
