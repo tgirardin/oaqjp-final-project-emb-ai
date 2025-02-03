@@ -1,5 +1,4 @@
 import requests
-import json
 
 def emotion_detector(text_to_analyze):
     url = "https://sn-watson-emotion.labs.skills.network/v1/watson.runtime.nlp.v1/NlpService/EmotionPredict"
@@ -16,7 +15,7 @@ def emotion_detector(text_to_analyze):
     print("API Response:", response_data)  # Debugging
 
     # Extraire les scores des émotions
-    emotions = response_data.get("emotion_predictions", [{}])[0].get("emotion", {})
+    emotions = response_data.get("emotionPredictions", [{}])[0].get("emotion", {})
 
     # Vérifier si l'API a retourné des émotions
     if not emotions:
